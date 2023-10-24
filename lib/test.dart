@@ -19,18 +19,33 @@ class _MyHomePageState extends State<MyHomePage> {
     }
   }
 
+  // void onPreviousButtonPressed() {
+  //   int parsedText = int.parse(textController.text);
+  //   if (currentIndex - maxDisplayCount >= 0) {
+  //     currentIndex -= maxDisplayCount;
+  //   } else if (currentIndex > 0) {
+  //     currentIndex = 0;
+  //   } else {
+  //     currentIndex = (currentIndex - maxDisplayCount + parsedText) % parsedText;
+  //   }
+  //   addNumbersToList();
+  //   setState(() {});
+  // }
+
   void onPreviousButtonPressed() {
-    if (currentIndex - maxDisplayCount >= 0) {
+    int parsedText = int.parse(textController.text);
+    if (currentIndex - maxDisplayCount >= 0 && currentIndex > 0) {
       currentIndex -= maxDisplayCount;
     } else {
-      currentIndex = (currentIndex - maxDisplayCount) % int.parse(textController.text) + int.parse(textController.text);
+      currentIndex = 0;
     }
     addNumbersToList();
     setState(() {});
   }
 
   void onNextButtonPressed() {
-    currentIndex = (currentIndex + maxDisplayCount) % int.parse(textController.text);
+    int parsedText = int.parse(textController.text);
+    currentIndex = (currentIndex + maxDisplayCount) % parsedText;
     addNumbersToList();
     setState(() {});
   }
